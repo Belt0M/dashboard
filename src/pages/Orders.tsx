@@ -17,7 +17,7 @@ import { ordersData, ordersGrid } from '../data/dummy.js'
 
 const Orders = () => {
 	return (
-		<div className='m-6 mt-12 md:m-10 p-6 md:p-10 bg-white rounded-xl'>
+		<div className='m-6 mt-12 md:m-10 p-6 md:p-10 bg-white rounded-xl drop-shadow-md'>
 			<Header category='Page' title='Orders' />
 			<GridComponent
 				id='gridcomp'

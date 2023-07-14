@@ -12,6 +12,7 @@ import {
 	Calendar,
 	ColorMapping,
 	ColorPicker,
+	Customers,
 	ECommerce,
 	Editor,
 	Employees,
@@ -75,12 +76,12 @@ const App = () => {
 								{/* Pages */}
 								<Route path='/orders' element={<Orders />} />
 								<Route path='/employees' element={<Employees />} />
-								<Route path='/customers' element='Customers' />
+								<Route path='/customers' element={<Customers />} />
 
 								{/* Apps */}
+								<Route path='/calendar' element={<Calendar />} />
 								<Route path='/kanban' element={<Kanban />} />
 								<Route path='/editor' element={<Editor />} />
-								<Route path='/calendar' element={<Calendar />} />
 								<Route path='/color-picker' element={<ColorPicker />} />
 
 								{/* Charts */}
