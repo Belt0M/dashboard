@@ -15,7 +15,7 @@ import { customersData, customersGrid } from '../data/dummy'
 
 const Customers = () => {
 	return (
-		<div className='m-6 mt-12 md:m-10 p-6 md:p-10 bg-white rounded-xl drop-shadow-md'>
+		<div className='m-4 mt-24 md:m-10 p-2 md:p-10 bg-white rounded-xl drop-shadow-md'>
 			<Header category='Page' title='Customers' />
 			<GridComponent
 				dataSource={customersData}

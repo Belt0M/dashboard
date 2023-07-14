@@ -12,7 +12,7 @@ import { employeesData, employeesGrid } from '../data/dummy.js'
 
 const Employees = () => {
 	return (
-		<div className='m-6 mt-12 md:m-10 p-6 md:p-10 bg-white rounded-xl drop-shadow-md'>
+		<div className='m-4 mt-24 md:m-10 p-2 md:p-10 bg-white rounded-xl drop-shadow-md'>
 			<Header category='Page' title='Employees' />
 			<GridComponent
 				dataSource={employeesData}
