@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import { GoDotFill } from 'react-icons/go'
 import { Button, SparkLine, Stacked } from '../components'
+import { StateContext } from '../contexts/StateContext'
 import { SparklineAreaData, earningData } from '../data/dummy'
 
 const Ecommerce = () => {
+	const { currentColor } = useContext(StateContext)
+
 	return (
 		<div className='mt-12'>
 			<div className='flex flex-wrap lg:flex-nowrap justify-center'>
@@ -15,7 +19,7 @@ const Ecommerce = () => {
 					</div>
 					<div className='mt-3'>
 						<Button
-							bgColor='blue'
+							bgColor={currentColor}
 							borderRadius='10px'
 							color='white'
 							size='md'
@@ -97,12 +101,12 @@ const Ecommerce = () => {
 									height='80px'
 									width='250px'
 									data={SparklineAreaData}
-									color='blue'
+									color={currentColor}
 								/>
 							</div>
 							<div className='mt-10'>
 								<Button
-									bgColor='blue'
+									bgColor={currentColor}
 									borderRadius='10px'
 									color='white'
 									text='Download Report'

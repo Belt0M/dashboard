@@ -6,7 +6,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { StateContext } from '../contexts/StateContext'
 import { links } from '../data/dummy'
 const Sidebar = () => {
-	const { activeMenu, setActiveMenu, screenSize } = useContext(StateContext)
+	const { activeMenu, setActiveMenu, screenSize, currentColor } =
+		useContext(StateContext)
 
 	const handleCLoseSidebar = () => {
 		if (activeMenu && screenSize && screenSize < 900) {
@@ -14,9 +15,7 @@ const Sidebar = () => {
 		}
 	}
 
-	const activeBg = 'bg-blue-400'
-
-	const activeLink = `flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-md text-white text-md m-2 ${activeBg}`
+	const activeLink = `flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-md text-white text-md m-2`
 	const normalLink =
 		'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 transition'
 
@@ -53,6 +52,9 @@ const Sidebar = () => {
 										key={link.name}
 										to={`/${link.name}`}
 										onClick={handleCLoseSidebar}
+										style={({ isActive }) => ({
+											backgroundColor: isActive ? currentColor : '',
+										})}
 										className={({ isActive }) =>
 											isActive ? activeLink : normalLink
 										}

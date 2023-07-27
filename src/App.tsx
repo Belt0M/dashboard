@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { useContext } from 'react'
 import './App.scss'
-import { Navbar, Sidebar } from './components'
+import { Navbar, Sidebar, ThemeSettings } from './components'
 import { StateContext } from './contexts/StateContext'
 import {
 	Area,
@@ -26,7 +26,8 @@ import {
 } from './pages'
 
 const App = () => {
-	const { activeMenu } = useContext(StateContext)
+	const { activeMenu, themeSettings, setThemeSettings, currentColor } =
+		useContext(StateContext)
 
 	return (
 		<div>
@@ -38,7 +39,8 @@ const App = () => {
 							<button
 								type='button'
 								className='text-3xl hover:drop-shadow-lg p-3 text-white rounded-full'
-								style={{ backgroundColor: 'blue' }}
+								style={{ backgroundColor: currentColor }}
+								onClick={() => setThemeSettings(!themeSettings)}
 							>
 								<FiSettings />
 							</button>
@@ -66,8 +68,10 @@ const App = () => {
 							<Navbar />
 						</div>
 
-						{/* Routes */}
 						<div>
+							{themeSettings && <ThemeSettings />}
+
+							{/* Routes */}
 							<Routes>
 								{/* Dashboard */}
 								<Route path='/' element={<ECommerce />} />
