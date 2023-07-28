@@ -26,11 +26,16 @@ import {
 } from './pages'
 
 const App = () => {
-	const { activeMenu, themeSettings, setThemeSettings, currentColor } =
-		useContext(StateContext)
+	const {
+		activeMenu,
+		themeSettings,
+		setThemeSettings,
+		currentColor,
+		currentMode,
+	} = useContext(StateContext)
 
 	return (
-		<div>
+		<div className={currentMode === 'Dark' ? 'dark' : ''}>
 			<BrowserRouter>
 				<div className='flex dark:bg-main-dark-bg'>
 					{/* Settings rounded fixed button */}
@@ -60,7 +65,7 @@ const App = () => {
 
 					{/* Navbar */}
 					<div
-						className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
+						className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${
 							activeMenu ? 'md:ml-72' : 'flex-2'
 						}`}
 					>

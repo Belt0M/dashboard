@@ -15,9 +15,9 @@ const Sidebar = () => {
 		}
 	}
 
-	const activeLink = `flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-md text-white text-md m-2`
+	const activeLink = `flex items-center gap-5 pl-4 py-3 rounded-md text-white text-md m-2`
 	const normalLink =
-		'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 transition'
+		'flex items-center gap-5 pl-4 py-3 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:bg-main-dark-bg hover:bg-light-gray m-2 transition'
 
 	return (
 		<div className='ml-3 overflow-auto md:overflow-hidden md:hover:overflow-auto pb-10 h-screen'>
