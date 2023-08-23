@@ -18,6 +18,7 @@ const LineChart = () => {
 
 	return (
 		<ChartComponent
+			id='line-chart'
 			height='420px'
 			primaryXAxis={{
 				valueType: 'DateTime',

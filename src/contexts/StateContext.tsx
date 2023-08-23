@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-interface IInitState {
+export interface IInitState {
 	chat: boolean
 	cart: boolean
 	userProfile: boolean
@@ -79,7 +79,7 @@ export const ContextProvider = ({
 	}
 
 	const handleClick = (clicked: keyof IInitState) => {
-		setIsClicked({ ...initialState, [clicked]: true })
+		setIsClicked({ ...initialState, [clicked]: !isClicked[clicked] })
 	}
 
 	return (

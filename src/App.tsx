@@ -2,7 +2,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { FiSettings } from 'react-icons/fi'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import './App.scss'
 import { Navbar, Sidebar, ThemeSettings } from './components'
 import { StateContext } from './contexts/StateContext'
@@ -10,7 +10,6 @@ import {
 	Area,
 	Bar,
 	Calendar,
-	ColorMapping,
 	ColorPicker,
 	Customers,
 	ECommerce,
@@ -22,7 +21,6 @@ import {
 	Orders,
 	Pie,
 	Pyramid,
-	Stacked,
 } from './pages'
 
 const App = () => {
@@ -32,7 +30,14 @@ const App = () => {
 		setThemeSettings,
 		currentColor,
 		currentMode,
+		setCurrentMode,
+		setCurrentColor,
 	} = useContext(StateContext)
+
+	useEffect(() => {
+		setCurrentMode(localStorage.getItem('themeMode') as string)
+		setCurrentColor(localStorage.getItem('colorMode') as string)
+	}, [setCurrentMode, setCurrentColor])
 
 	return (
 		<div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -54,11 +59,11 @@ const App = () => {
 
 					{/* Sidebar */}
 					{activeMenu ? (
-						<div className='sidebar fixed w-72 bg-white dark:bg-secondary-dark-bg'>
+						<div className='sidebar fixed w-72 bg-white dark:bg-secondary-dark-bg z-20'>
 							<Sidebar />
 						</div>
 					) : (
-						<div className='w-0 dark:bg-secondary-dark-bg'>
+						<div className='w-0 dark:bg-secondary-dark-bg z-20'>
 							<Sidebar />
 						</div>
 					)}
@@ -69,11 +74,11 @@ const App = () => {
 							activeMenu ? 'md:ml-72' : 'flex-2'
 						}`}
 					>
-						<div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
+						<div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full top-0 right-0'>
 							<Navbar />
 						</div>
 
-						<div>
+						<div className='m-0 relative'>
 							{themeSettings && <ThemeSettings />}
 
 							{/* Routes */}
@@ -99,9 +104,7 @@ const App = () => {
 								<Route path='/bar' element={<Bar />} />
 								<Route path='/pie' element={<Pie />} />
 								<Route path='/financial' element={<Financial />} />
-								<Route path='/color-mapping' element={<ColorMapping />} />
 								<Route path='/pyramid' element={<Pyramid />} />
-								<Route path='/stacked' element={<Stacked />} />
 							</Routes>
 						</div>
 					</div>

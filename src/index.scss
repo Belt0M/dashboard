@@ -4,6 +4,59 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden;
+}
+
+.dark {
+	background-color: transparent !important;
+}
+
+.e-grid *:not(button) {
+	background-color: transparent !important;
+}
+
+table {
+	border-color: #575c655c !important;
+}
+
+.e-grid.dark
+	*:not(
+		.e-dialog *,
+		.e-dlg-content,
+		button,
+		.e-pagercontainer,
+		div:not(.e-icons),
+		.e-toolbar-items
+	) {
+	background-color: #575c655c !important;
+	border-color: #4040405c !important;
+	outline: none !important;
+	color: #fff !important;
+}
+
+.e-grid {
+	border-width: 0px !important;
+}
+
+.e-schedule.dark * {
+	background-color: #575c655c !important;
+	border-color: #2f2f2f5c !important;
+	outline: none !important;
+	color: #fff !important;
+}
+
+#kanban.dark * {
+	background-color: #575c655c !important;
+	border-color: #2f2f2f5c !important;
+	outline: none !important;
+	color: #fff !important;
+}
+
+.e-richtexteditor.dark * {
+	background-color: #575c655c !important;
+	border-color: #2f2f2f5c !important;
+	outline: none !important;
+	color: #fff !important;
 }
 
 @tailwind base;

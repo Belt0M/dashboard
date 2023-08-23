@@ -2,7 +2,9 @@ import {
 	ColorPickerComponent,
 	ColorPickerEventArgs,
 } from '@syncfusion/ej2-react-inputs'
+import { useContext } from 'react'
 import { Header } from '../components'
+import { StateContext } from '../contexts/StateContext'
 
 const ColorPicker = () => {
 	const onChange = (args: ColorPickerEventArgs) => {
@@ -12,8 +14,16 @@ const ColorPicker = () => {
 		}
 	}
 
+	const { currentMode } = useContext(StateContext)
+
 	return (
-		<div className='m-4 mt-24 md:m-10 p-2 md:p-10 bg-white rounded-xl drop-shadow-md'>
+		<div
+			className='m-4 mt-24 md:m-10 p-2 md:p-10 bg-white rounded-xl drop-shadow-md'
+			style={{
+				backgroundColor: currentMode === 'Dark' ? '#33373E' : '#fff',
+				color: currentMode === 'Dark' ? '#fff' : '#33373E',
+			}}
+		>
 			<Header category='App' title='Color Picker' />
 			<div className='text-center'>
 				<div id='preview' />

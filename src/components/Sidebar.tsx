@@ -20,7 +20,7 @@ const Sidebar = () => {
 		'flex items-center gap-5 pl-4 py-3 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:bg-main-dark-bg hover:bg-light-gray m-2 transition'
 
 	return (
-		<div className='ml-3 overflow-auto md:overflow-hidden md:hover:overflow-auto pb-10 h-screen'>
+		<div className='ml-3 overflow-auto md:overflow-hidden md:hover:overflow-auto pb-10 h-screen z-20 sidebar'>
 			{activeMenu && (
 				<>
 					<div className='flex justify-between items-center'>
@@ -50,7 +50,7 @@ const Sidebar = () => {
 								{el.links.map(link => (
 									<NavLink
 										key={link.name}
-										to={`/${link.name}`}
+										to={`/${link.name === 'ecommerce' ? '' : link.name}`}
 										onClick={handleCLoseSidebar}
 										style={({ isActive }) => ({
 											backgroundColor: isActive ? currentColor : '',

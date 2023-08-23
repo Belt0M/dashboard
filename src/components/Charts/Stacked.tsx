@@ -10,6 +10,8 @@ import {
 	Tooltip,
 } from '@syncfusion/ej2-react-charts'
 
+import { useContext } from 'react'
+import { StateContext } from '../../contexts/StateContext'
 import { stackedCustomSeries } from '../../data/dummy.js'
 
 interface IStackedProps {
@@ -18,6 +20,8 @@ interface IStackedProps {
 }
 
 const Stacked = ({ width, height }: IStackedProps) => {
+	const { currentMode } = useContext(StateContext)
+
 	const primaryxAxis: AxisModel = {
 		majorGridLines: { width: 0 },
 		minorGridLines: { width: 0 },
@@ -39,6 +43,7 @@ const Stacked = ({ width, height }: IStackedProps) => {
 		minorTickLines: { width: 0 },
 		labelFormat: '{value}',
 	}
+
 	return (
 		<ChartComponent
 			width={width}
@@ -48,7 +53,11 @@ const Stacked = ({ width, height }: IStackedProps) => {
 			tooltip={{ enable: true }}
 			primaryXAxis={primaryxAxis}
 			primaryYAxis={primaryyAxis}
-			legendSettings={{ background: 'white' }}
+			legendSettings={{
+				background: currentMode === 'Dark' ? 'transparent' : '#fff',
+				textStyle: { color: currentMode === 'Dark' ? '#fff' : '' },
+			}}
+			background={currentMode === 'Dark' ? 'transparent' : '#fff'}
 		>
 			<Inject services={[Legend, Category, StackingColumnSeries, Tooltip]} />
 			<SeriesCollectionDirective>

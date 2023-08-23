@@ -20,6 +20,7 @@ const Area = () => {
 			<Header category='Chart' title='Inflation Rate Area Chart' />
 			<div className='w-full'>
 				<ChartComponent
+					id='area-chart'
 					height='420px'
 					primaryXAxis={{
 						valueType: 'DateTime',

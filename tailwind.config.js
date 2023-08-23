@@ -31,6 +31,7 @@ module.exports = {
 				1000: '1000px',
 				1200: '1200px',
 				1400: '1400px',
+				'90p': '90%',
 			},
 			height: {
 				80: '80px',
@@ -41,6 +42,10 @@ module.exports = {
 			backgroundImage: {
 				'hero-pattern':
 					"url('https://www.zilliondesigns.com/blog/wp-content/uploads/Perfect-Ecommerce-Sales-Banner.jpg')",
+			},
+			spacing: {
+				'17.5rem': '17.5rem',
+				'17rem': '17rem',
 			},
 		},
 	},

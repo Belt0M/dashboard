@@ -1,17 +1,42 @@
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
-import { useContext } from 'react'
-import { BsCheck } from 'react-icons/bs'
+import { useContext, useEffect, useRef } from 'react'
+import { BsCheck, BsSunFill } from 'react-icons/bs'
+import { FaCloudMoon } from 'react-icons/fa'
 import { MdOutlineCancel } from 'react-icons/md'
 import { StateContext } from '../contexts/StateContext'
 import { themeColors } from '../data/dummy'
 
 const ThemeSettings = () => {
-	const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
-		useContext(StateContext)
+	const {
+		setColor,
+		setMode,
+		currentMode,
+		currentColor,
+		setThemeSettings,
+		themeSettings,
+	} = useContext(StateContext)
+
+	const refThemeSettings = useRef<HTMLDivElement | null>(null)
+
+	useEffect(() => {
+		const handleClickOutside = (e: MouseEvent) => {
+			if (!refThemeSettings.current?.contains(e.target as Node)) {
+				setThemeSettings(!themeSettings)
+			}
+		}
+		document.addEventListener('click', handleClickOutside, true)
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside, true)
+		}
+	}, [setThemeSettings, themeSettings])
 
 	return (
 		<div className='bg-half-transparent w-screen fixed nav-item top-0 right-0'>
-			<div className='float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] dark:bg-secondary-dark-bg w-400'>
+			<div
+				className='float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] dark:bg-secondary-dark-bg w-400'
+				ref={refThemeSettings}
+			>
 				<div className='flex justify-between items-center p-4 ml-4'>
 					<p className='text-xl font-semibold'>Settings</p>
 					<button
@@ -22,33 +47,43 @@ const ThemeSettings = () => {
 						<MdOutlineCancel />
 					</button>
 				</div>
-				<div className='flex-col border-t-1 border-color p-4 ml-4'>
+				<div className='flex-col border-t-1 border-color p-4 ml-4 mb-2'>
 					<p className='font-semibold text-lg'>Theme Options</p>
-					<div className='mt-4'>
+					<div className='mt-4 flex relative'>
 						<input
 							type='radio'
 							id='light'
 							name='theme'
 							value='Light'
-							className='cursor-pointer'
+							className='cursor-pointer invisible'
 							onChange={setMode}
 							checked={currentMode === 'Light'}
 						/>
-						<label htmlFor='light' className='ml-2 text-md cursor-pointer'>
+						<label
+							htmlFor='light'
+							className='ml-2 text-md cursor-pointer flex gap-2 items-center absolute -left-2'
+							style={{ color: currentMode === 'Light' ? '#000' : 'grey' }}
+						>
+							<BsSunFill />
 							Light
 						</label>
 					</div>
-					<div className='mt-4'>
+					<div className='flex mt-5 -left-2 relative'>
 						<input
 							type='radio'
 							id='dark'
 							name='theme'
 							value='Dark'
-							className='cursor-pointer'
+							className='cursor-pointer invisible'
 							onChange={setMode}
 							checked={currentMode === 'Dark'}
 						/>
-						<label htmlFor='dark' className='ml-2 text-md cursor-pointer'>
+						<label
+							htmlFor='dark'
+							className='flex ml-2 text-md cursor-pointer absolute gap-2 items-center'
+							style={{ color: currentMode === 'Dark' ? '#fff' : 'grey' }}
+						>
+							<FaCloudMoon />
 							Dark
 						</label>
 					</div>
