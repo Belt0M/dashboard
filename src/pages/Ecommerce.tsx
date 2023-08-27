@@ -36,7 +36,7 @@ const Ecommerce = () => {
 					{earningData.map(el => (
 						<div
 							key={el.title}
-							className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-44 p-4 pt-9 rounded-2xl drop-shadow-md'
+							className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-44 md:h-auto h-48 w-2/5 p-4 pt-9 rounded-2xl drop-shadow-md'
 						>
 							<button
 								type='button'

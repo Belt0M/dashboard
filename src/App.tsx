@@ -35,9 +35,12 @@ const App = () => {
 	} = useContext(StateContext)
 
 	useEffect(() => {
-		setCurrentMode(localStorage.getItem('themeMode') as string)
-		setCurrentColor(localStorage.getItem('colorMode') as string)
-	}, [setCurrentMode, setCurrentColor])
+		setCurrentMode((localStorage.getItem('themeMode') as string) || currentMode)
+		setCurrentColor(
+			(localStorage.getItem('colorMode') as string) || currentColor
+		)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	return (
 		<div className={currentMode === 'Dark' ? 'dark' : ''}>
