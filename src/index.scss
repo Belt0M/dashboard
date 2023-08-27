@@ -11,7 +11,7 @@ body {
 	background-color: transparent !important;
 }
 
-.e-grid *:not(button) {
+.e-grid *:not(button, .e-check, .e-active) {
 	background-color: transparent !important;
 }
 

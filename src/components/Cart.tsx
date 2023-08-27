@@ -30,7 +30,7 @@ const Cart = () => {
 	return (
 		<div className='fixed w-full h-full bg-secondary-dark-bg/60 left-0 top-0 z-10'>
 			<aside
-				className='fixed w-2/5 md:w-1/4 h-full right-0 top-0 py-6 px-4'
+				className='fixed sm:w-2/5 xs:w-1/2 w-full lg:w-1/3 h-full right-0 top-0 py-6 px-4'
 				style={{
 					backgroundColor: bgColor,
 					borderWidth: '.2rem',
@@ -93,11 +93,11 @@ const Cart = () => {
 
 				{/* Place Order */}
 				<div className='mt-8'>
-					<div className='flex justify-between pb-4'>
+					<div className='flex justify-between pb-4' style={{ color: color }}>
 						<span>Sub Total</span>
 						<h6 className='font-bold'>$890</h6>
 					</div>
-					<div className='flex justify-between pb-6'>
+					<div className='flex justify-between pb-6' style={{ color: color }}>
 						<span>Total</span>
 						<h6 className='font-bold'>$890</h6>
 					</div>
