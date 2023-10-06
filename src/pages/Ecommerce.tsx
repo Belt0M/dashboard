@@ -6,11 +6,21 @@ import { SparklineAreaData, earningData } from '../data/dummy'
 
 const Ecommerce = () => {
 	const { currentColor, currentMode } = useContext(StateContext)
+	const colors = [
+		'border-emerald-500',
+		'border-sky-500',
+		'border-blue-500',
+		'border-violet-500',
+	]
 
 	return (
-		<div className='mt-12'>
+		<div className='mt-12 md:m-10'>
 			<div className='flex flex-wrap lg:flex-nowrap justify-center'>
-				<div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-48 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
+				<div
+					className={
+						' dark:text-gray-200 h-48 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-gradient-to-r to-purple-500  from-sky-600 bg-no-repeat bg-opacity-10'
+					}
+				>
 					<div className='flex justify-between items-center'>
 						<div
 							className='px-5 py-2 rounded-lg text-left'
@@ -32,11 +42,14 @@ const Ecommerce = () => {
 						/>
 					</div>
 				</div>
-				<div className='flex items-center justify-center flex-wrap m-3 gap-1'>
-					{earningData.map(el => (
+				<div className='flex items-center justify-center flex-wrap m-3 gap-2'>
+					{earningData.map((el, index) => (
 						<div
 							key={el.title}
-							className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-44 md:h-auto h-48 w-2/5 p-4 pt-9 rounded-2xl drop-shadow-md'
+							className={
+								colors[index % colors.length] +
+								' border-2 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-44 md:h-auto h-48 w-2/5 p-4 pt-9 rounded-2xl drop-shadow-md border-opacity-70'
+							}
 						>
 							<button
 								type='button'
